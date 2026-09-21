@@ -3,8 +3,8 @@ from EmotionDetection import emotion_detector
 
 app = Flask(__name__)
 
-@app.route("/emotionDetector")
-def emotion_detect():
+
+def analyze_emotion():
     text_to_analyze = request.args.get("textToAnalyze")
     response = emotion_detector(text_to_analyze)
 
@@ -20,6 +20,16 @@ def emotion_detect():
         response["sadness"],
         response["dominant_emotion"]
     )
+
+
+@app.route("/emotionDetector")
+def emotion_detector_route():
+    return analyze_emotion()
+
+
+@app.route("/sentimentAnalyzer")
+def sentiment_analyzer_compatibility_route():
+    return analyze_emotion()
 
 
 @app.route("/")
