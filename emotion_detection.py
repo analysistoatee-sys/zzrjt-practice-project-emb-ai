@@ -28,4 +28,18 @@ def emotion_detector(text_to_analyze):
     )
 
     with urlopen(request) as response:
-        return response.read().decode("utf-8")
+        response_text = response.read().decode("utf-8")
+
+    response_data = json.loads(response_text)
+    emotions = response_data["emotionPredictions"][0]["emotion"]
+
+    dominant_emotion = max(emotions, key=emotions.get)
+
+    return {
+        "anger": emotions["anger"],
+        "disgust": emotions["disgust"],
+        "fear": emotions["fear"],
+        "joy": emotions["joy"],
+        "sadness": emotions["sadness"],
+        "dominant_emotion": dominant_emotion
+    }
