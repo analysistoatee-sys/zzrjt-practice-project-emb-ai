@@ -1,3 +1,3 @@
-# Final project
+# Final Project
 
-This repo is for the practice project which is to be based on Embedded AI libraries.
+This project demonstrates an emotion detection application using the Watson NLP library, Python, and Flask.
